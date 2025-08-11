@@ -12,7 +12,6 @@ def load_csv() -> pd.DataFrame:
     input_csv = Config["INPUT_CSV"]
     try:
         df = pd.read_csv(input_csv, sep=";")
-        print(f"Loaded {len(df)} rows from {input_csv}.")
         return df
     except FileNotFoundError:
         print(f"Error: The file {input_csv} does not exist.")

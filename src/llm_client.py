@@ -26,7 +26,6 @@ def get_llm_client(provider: LLMProvider) -> "LLM":
     """
     Factory function to get the appropriate LLM client based on the provider.
     """
-    print(f"Using LLM provider: {provider.value}")
     if provider == LLMProvider.MOCK:
         return MockLLM()
 
@@ -128,6 +127,7 @@ class LLMClient(LLM):
         prompt = (
             f"Classifique o chamado abaixo em somente **UMA** das categorias a seguir:\n"
             f"{categories_str}\n\n"
+            f"Se a reclamaçao for especificamente sobre uma falha ou detalhe técnico, classifique como 'Suporte Técnico'.\n\n"
             f"Chamado: {text}\n\n"
             "Responda apenas com o nome exato da categoria: "
         )

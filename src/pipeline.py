@@ -60,7 +60,6 @@ if __name__ == "__main__":
         "Dúvida",
         "Solicitação de Serviço",
     ]
-    print(Config)
 
     provider = Config["PROVIDER"]
     output_path = Config["OUTPUT_CSV"]
@@ -69,11 +68,11 @@ if __name__ == "__main__":
         raise ValueError(f"Unknown LLM provider: {provider}")
 
     llm_client = get_llm_client(LLMProvider.from_string(provider))
-    print(f"Using LLM provider: {provider}")
+    print(f"Using LLM provider: {provider}\n")
 
     print(f"Loading data from {Config['INPUT_CSV']}")
     tickets = load_csv()
-    print(f"Loaded {len(tickets)} tickets")
+    print(f"Loaded {len(tickets)} tickets\n")
 
     if tickets.empty:
         print("No tickets to process. Exiting.")
